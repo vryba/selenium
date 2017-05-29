@@ -1,6 +1,6 @@
-package test.loginTest;
+package com.vryba.selenium.loginTest;
 
-import main.com.vryba.selenium.utilities.BrowserFactory;
+import com.vryba.selenium.utilities.BrowserFactory;
 import org.openqa.selenium.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;

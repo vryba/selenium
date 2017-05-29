@@ -1,4 +1,4 @@
-package main.com.vryba.selenium.utilities;
+package com.vryba.selenium.utilities;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
