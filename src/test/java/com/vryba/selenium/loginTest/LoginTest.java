@@ -1,5 +1,7 @@
 package com.vryba.selenium.loginTest;
 
+import com.vryba.selenium.pageObjects.HomePO;
+import com.vryba.selenium.pageObjects.LoginPO;
 import com.vryba.selenium.utilities.BrowserFactory;
 import org.openqa.selenium.*;
 import org.testng.annotations.AfterClass;
@@ -19,8 +21,7 @@ public class LoginTest {
     private StringBuffer verificationErrors = new StringBuffer();
 
     @BeforeClass(alwaysRun = true)
-    public void setUp(){
-        baseUrl = "https://stackoverflow.com/";
+    public void setUp(){baseUrl = "https://stackoverflow.com/";
     }
     @BeforeMethod
     public void methodSetup(){
@@ -29,26 +30,19 @@ public class LoginTest {
     }
     @Test
     public void loginButtonCheck(){
-        WebElement loginButton = driver.findElement(By.xpath("//a[@class='login-link btn-clear']"));
-        loginButton.click();
-        WebElement activeTab = driver.findElement(By.xpath(".//*[@id='tabs']/a[@class='youarehere']"));
-        String activeTabTextValue = activeTab.getText();
-        assertEquals(activeTabTextValue, "Log in");
+        HomePO homePage = new HomePO(driver);
+        String tabCaption = homePage.loginButtonClick().getActiveTabCaptionValue();
+        assertEquals(tabCaption, "Log in");
     }
     @Test
     public void invalidCredentialsCheck() {
-        WebElement loginButton = driver.findElement(By.xpath("//a[@class='login-link btn-clear']"));
-        loginButton.click();
-        WebElement emailField = driver.findElement(By.id("email"));
-        WebElement passwordField = driver.findElement(By.id("password"));
-        WebElement loginSubmitButton = driver.findElement(By.id("submit-button"));
-        emailField.clear();
-        emailField.sendKeys("wrongEmail");
-        passwordField.clear();
-        passwordField.sendKeys("wrongPassword");
-        loginSubmitButton.click();
-        WebElement errMessage = driver.findElement(By.xpath("//div[text()='The email is not a valid email address.']"));
-        assertTrue(errMessage.isDisplayed());
+        HomePO homePage = new HomePO(driver);
+        boolean isErrorDisplayed = homePage
+                .loginButtonClick()
+                .enterCredentials("wrongEmail", "wrongPass")
+                .submitButtonClick()
+                .isErrorDisplayed(LoginPO.INCORRECT_EMAIL);
+        assertTrue(isErrorDisplayed);
     }
     @AfterClass(alwaysRun = true)
     public void tearDown() {
