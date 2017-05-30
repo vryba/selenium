@@ -26,23 +26,6 @@ public class LoginTest {
     @BeforeMethod
     public void methodSetup(){
         driver = BrowserFactory.startBrowser(BrowserFactory.BrowserType.FirefoxDriver, baseUrl);
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    }
-    @Test
-    public void loginButtonCheck(){
-        HomePO homePage = new HomePO(driver);
-        String tabCaption = homePage.loginButtonClick().getActiveTabCaptionValue();
-        assertEquals(tabCaption, "Log in");
-    }
-    @Test
-    public void invalidCredentialsCheck() {
-        HomePO homePage = new HomePO(driver);
-        boolean isErrorDisplayed = homePage
-                .loginButtonClick()
-                .enterCredentials("wrongEmail", "wrongPass")
-                .submitButtonClick()
-                .isErrorDisplayed(LoginPO.INCORRECT_EMAIL);
-        assertTrue(isErrorDisplayed);
     }
     @AfterClass(alwaysRun = true)
     public void tearDown() {
@@ -52,36 +35,20 @@ public class LoginTest {
             fail(verificationErrorString);
         }
     }
-    private boolean isElementPresent(By by) {
-        try {
-            driver.findElement(by);
-            return true;
-        } catch (NoSuchElementException e) {
-            return false;
-        }
+    @Test
+    public void loginButtonCheck(){
+        HomePO homePage = new HomePO();
+        String tabCaption = homePage.loginButtonClick().getActiveTabCaptionValue();
+        assertEquals(tabCaption, "Log in");
     }
-
-    private boolean isAlertPresent() {
-        try {
-            driver.switchTo().alert();
-            return true;
-        } catch (NoAlertPresentException e) {
-            return false;
-        }
-    }
-
-    private String closeAlertAndGetItsText() {
-        try {
-            Alert alert = driver.switchTo().alert();
-            String alertText = alert.getText();
-            if (acceptNextAlert) {
-                alert.accept();
-            } else {
-                alert.dismiss();
-            }
-            return alertText;
-        } finally {
-            acceptNextAlert = true;
-        }
+    @Test
+    public void invalidCredentialsCheck() {
+        HomePO homePage = new HomePO();
+        boolean isErrorDisplayed = homePage
+                .loginButtonClick()
+                .enterCredentials("wrongEmail", "wrongPass")
+                .submitButtonClick()
+                .isErrorDisplayed(LoginPO.INCORRECT_EMAIL);
+        assertTrue(isErrorDisplayed);
     }
 }

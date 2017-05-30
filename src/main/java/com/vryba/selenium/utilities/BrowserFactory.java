@@ -6,7 +6,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
 public class BrowserFactory {
-
+    private static final String DRIVER_NOT_INITIALIZED = "! ERROR\tWebDriver not initialized";
     private static BrowserFactory browserFactory = null;
     private static WebDriver driver;
     public static enum BrowserType{FirefoxDriver, InternetExplorerDriver, ChromeDriver};
@@ -34,6 +34,13 @@ public class BrowserFactory {
         driver.manage().window().maximize();
         driver.get(url);
         return driver;
+    }
+    public static WebDriver getWebDriver() {
+        if (browserFactory != null) {
+            return driver;
+        } else {
+            throw new RuntimeException(DRIVER_NOT_INITIALIZED);
+        }
     }
 }
 
