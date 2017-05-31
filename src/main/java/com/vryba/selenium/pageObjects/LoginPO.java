@@ -2,8 +2,6 @@ package com.vryba.selenium.pageObjects;
 
 import com.vryba.selenium.utilities.Element;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class LoginPO {
 
@@ -11,14 +9,18 @@ public class LoginPO {
     private Element emailField;
     private Element passwordField;
     private Element loginSubmitButton;
-    public static final String INCORRECT_EMAIL="The email is not a valid email address.";
-    //public static final String INCORRECT_PASSWORD="The email is not a valid email address.";
+    private Element capsLink;
+    public static final String EMPTY_EMAIL="Email cannot be empty.";
+    public static final String EMPTY_PASSWORD="Password cannot be empty.";
+    public static final String INVALID_EMAIL="The email is not a valid email address.";
+    public static final String INVALID_PASSWORD="The email or password is incorrect.";
 
     public LoginPO(){
         this.activeTab=Element.find(By.xpath(".//*[@id='tabs']/a[@class='youarehere']"));
         this.emailField=Element.find(By.id("email"));
         this.passwordField = Element.find(By.id("password"));
         this.loginSubmitButton = Element.find(By.id("submit-button"));
+        this.capsLink = Element.find(By.xpath("//div[@class='caps-lock-warning']"));
     }
     public String getActiveTabCaptionValue(){
         return activeTab.getText();
@@ -33,7 +35,9 @@ public class LoginPO {
         return this;
     }
     public boolean isErrorDisplayed(String errMessage){
-
         return Element.find(By.xpath("//div[text()='"+errMessage+"']")).isVisibility(true);
+    }
+    public String getCapsLockMessageText(){
+        return capsLink.getText();
     }
 }

@@ -9,7 +9,7 @@ public class BrowserFactory {
     private static final String DRIVER_NOT_INITIALIZED = "! ERROR\tWebDriver not initialized";
     private static BrowserFactory browserFactory = null;
     private static WebDriver driver;
-    public static enum BrowserType{FirefoxDriver, InternetExplorerDriver, ChromeDriver};
+    public enum BrowserType{FirefoxDriver, InternetExplorerDriver, ChromeDriver};
 
     private BrowserFactory(BrowserType browserType){
         if(browserFactory == null){
@@ -41,6 +41,11 @@ public class BrowserFactory {
         } else {
             throw new RuntimeException(DRIVER_NOT_INITIALIZED);
         }
+    }
+    public static void closeSession(){
+        browserFactory=null;
+        driver.quit();
+        driver=null;
     }
 }
 

@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  * Class for WebElement manipulating
  */
 public class Element {
-    public static final long IMPLICITLY_WAIT_TIMEOUT = 3000;
+    public static final long IMPLICITLY_WAIT_TIMEOUT = 3;
     private final String TEXT_CONTENT_ATTRIBUTE = "textContent";
     private final String ERROR_WEB_ELEMENT_NOT_VISIBLE = "! ERROR\tWeb element is invisible. Location: %s";
     private final String ERROR_WEB_ELEMENT_NOT_FOUND = "! ERROR\tWeb element is missing. Location: %s";
