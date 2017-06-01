@@ -3,28 +3,32 @@ package com.vryba.selenium.loginTest;
 import com.vryba.selenium.pageObjects.HomePO;
 import com.vryba.selenium.utilities.BrowserFactory;
 import com.vryba.selenium.utilities.BrowserUtilities;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.fail;
 
 public class SearchTest {
 
-    private String baseUrl;
+    private String baseUrl = "https://stackoverflow.com/";
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
     //DOMConfigurator.configure("log4j.xml");
     //Log.startTestCase("Selenium_Test_001");
 
-    @BeforeClass(alwaysRun = true)
-    public void setUp(){baseUrl = "https://stackoverflow.com/";
-    }
     @BeforeMethod
-    public void methodSetup(){
+    public void methodSetup() {
         BrowserFactory.startBrowser(BrowserFactory.BrowserType.FirefoxDriver, baseUrl);
     }
+
     @AfterMethod
-    public void testCleanUp(){
+    public void testCleanUp() {
         new BrowserUtilities().executeJSCode(BrowserUtilities.CLEAR_LOCAL_STORAGE);
     }
+
     @AfterClass(alwaysRun = true)
     public void tearDown() {
         BrowserFactory.closeSession();
@@ -33,10 +37,12 @@ public class SearchTest {
             fail(verificationErrorString);
         }
     }
-    @Test
-    public void checkSearchFunctioanality(){
 
+    @Test
+    public void checkSearchFunctioanality() {
+        String searchText="WebDriver";
         HomePO homePO = new HomePO();
-        homePO.insertStringInSearchField("Selenium WebDriver");
+        boolean searchResult = homePO.insertStringInSearchField(searchText).areListItemsHaveText(searchText);
+        assertTrue(searchResult);
     }
 }

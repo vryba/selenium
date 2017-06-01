@@ -29,16 +29,6 @@ public class Element {
     }
 
     /**
-     * Returns an instance of Elements by given locator
-     *
-     * @param locator
-     * @return
-     */
-    public static Elements findAll(By locator) {
-        return new Elements(locator);
-    }
-
-    /**
      * Constructor
      *
      * @param locator
@@ -202,8 +192,7 @@ public class Element {
      * @return
      */
     private WebElement waitForVisibility() {
-        WebDriverWait wait = new WebDriverWait(BrowserFactory.getWebDriver(),
-                IMPLICITLY_WAIT_TIMEOUT);
+        WebDriverWait wait = new WebDriverWait(BrowserFactory.getWebDriver(), IMPLICITLY_WAIT_TIMEOUT);
         waitForPresence();
         if (locator != null) {
             return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
