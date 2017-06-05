@@ -1,4 +1,4 @@
-package com.vryba.selenium.loginTest;
+package com.vryba.selenium;
 
 import com.vryba.selenium.pageObjects.HomePO;
 import com.vryba.selenium.pageObjects.LoginPO;

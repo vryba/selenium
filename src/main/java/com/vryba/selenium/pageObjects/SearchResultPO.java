@@ -7,6 +7,7 @@ public class SearchResultPO {
     private Elements searchResults;
 
     public SearchResultPO(){
+
         this.searchResults = Elements.find(By.xpath("//div[@class='result-link']//a"));
     }
 

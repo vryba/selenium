@@ -244,3 +244,14 @@ public class Element {
         }
     }
 }
+
+/*
+    public boolean isTextPresentInElementLocated(final By locator, final String text) {
+        boolean result = true;
+        String elementText = Element.find(locator).getText();
+        return elementText.contains(text);
+    }
+
+    public String toString() {
+        return String.format("text ('%s') to be present in element found by %s", text, locator);
+    }*/
