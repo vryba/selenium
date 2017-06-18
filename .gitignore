@@ -24,3 +24,4 @@ hs_err_pid*
 # ignore files with extentions:
 .idea/
 *.iml
+target/

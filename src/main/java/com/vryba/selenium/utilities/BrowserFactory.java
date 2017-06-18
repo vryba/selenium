@@ -8,8 +8,8 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 public class BrowserFactory {
     private static final String DRIVER_NOT_INITIALIZED = "! ERROR\tWebDriver not initialized";
     private static BrowserFactory browserFactory = null;
-    private static WebDriver driver;
-    public enum BrowserType{FirefoxDriver, InternetExplorerDriver, ChromeDriver};
+    public static WebDriver driver;
+    public enum BrowserType{FirefoxDriver, InternetExplorerDriver, ChromeDriver}
 
     private BrowserFactory(BrowserType browserType){
         if(browserFactory == null){
