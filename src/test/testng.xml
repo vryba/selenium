@@ -3,12 +3,12 @@
 <suite name="Suite1" verbose="1" >
     <listeners>
         <listener class-name="com.vryba.selenium.listeners.TestListener" />
+        <listener class-name="org.uncommons.reportng.HTMLReporter" />
     </listeners>
     <test name="All Tests" >
         <classes>
-            <!--class name="com.vryba.selenium.Apache_POI_LoginTC" /-->
-            <!--class name="com.vryba.selenium.Home_Page_TC" /-->
-            <!--class name="com.vryba.selenium.Login_TC" /-->
+            <class name="com.vryba.selenium.Home_Page_TC" />
+            <class name="com.vryba.selenium.Login_TC" />
             <class name="com.vryba.selenium.Search_TC" />
         </classes>
     </test>

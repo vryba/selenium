@@ -22,8 +22,8 @@ public class TestListener extends TestListenerAdapter {
 
         String testClassName = getTestClassName(result.getInstanceName()).trim();
 
-        String testMethodName = result.getName().toString().trim();
-        String screenShotName = testMethodName + ".png";
+        String testMethodName = result.getName().toString().trim() + "_%d.png";
+        String screenShotName = String.format(testMethodName, System.currentTimeMillis());
 
         if (driver != null) {
             String imagePath = ".." + fileSeperator + "screenshots"

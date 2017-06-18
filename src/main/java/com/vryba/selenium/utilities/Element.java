@@ -38,7 +38,6 @@ public class Element {
         try {
             this.webElement = BrowserFactory.getWebDriver().findElement(locator);
         } catch (NoSuchElementException e) {
-            System.out.println(String.format(ERROR_WEB_ELEMENT_NOT_FOUND, locator));
             this.webElement = null;
         }
     }

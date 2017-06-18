@@ -1,5 +1,6 @@
 package com.vryba.selenium;
 
+import com.vryba.selenium.dataProvider.UsersData;
 import com.vryba.selenium.pageObjects.HomePO;
 import com.vryba.selenium.pageObjects.LoginPO;
 import com.vryba.selenium.utilities.BrowserFactory;
@@ -38,7 +39,7 @@ public class Login_TC {
         HomePO homePage = new HomePO();
         boolean isErrorDisplayed = homePage
                 .loginButtonClick()
-                .enterCredentials("", "wrongPass")
+                .enterCredentials(new UsersData("emptyEmail"))
                 .submitButtonClick()
                 .isErrorDisplayed(LoginPO.EMPTY_EMAIL);
         assertTrue(isErrorDisplayed);

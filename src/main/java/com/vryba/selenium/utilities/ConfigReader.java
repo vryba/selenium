@@ -13,7 +13,7 @@ public class ConfigReader {
 		// Now file path is machine independent.
 		String path = System.getProperty("user.dir") + "\\src\\main\\resources\\config.properties";
 		System.out.println("Actual Location of File -> " + path);
-		//Create FileInputStream object of Config/data file
+		//Create FileInputStream object of Config/dataProvider file
 		FileInputStream fis= new FileInputStream(path);
 		// Pass fs object to load method of Properties object
 		prop.load(fis);
