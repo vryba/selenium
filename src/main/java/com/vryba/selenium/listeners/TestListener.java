@@ -1,5 +1,6 @@
 package com.vryba.selenium.listeners;
 
+import com.vryba.selenium.utilities.BrowserFactory;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -17,7 +18,7 @@ public class TestListener extends TestListenerAdapter {
     public void onTestFailure(ITestResult result) {
         System.out.println("***** Error " + result.getName() + " test has failed *****");
 
-       // driver = TestBase.getDriver();
+       driver = BrowserFactory.getWebDriver();
 
         String testClassName = getTestClassName(result.getInstanceName()).trim();
 
@@ -25,8 +26,8 @@ public class TestListener extends TestListenerAdapter {
         String screenShotName = testMethodName + ".png";
 
         if (driver != null) {
-            String imagePath = ".." + fileSeperator + "Screenshots"
-                    + fileSeperator + "Results" + fileSeperator + testClassName
+            String imagePath = ".." + fileSeperator + "screenshots"
+                    + fileSeperator + "results" + fileSeperator + testClassName
                     + fileSeperator
                     + takeScreenShot(driver, screenShotName, testClassName);
             System.out.println("Screenshot can be found : " + imagePath);
@@ -36,14 +37,14 @@ public class TestListener extends TestListenerAdapter {
     public static String takeScreenShot(WebDriver driver,
                                         String screenShotName, String testName) {
         try {
-            File file = new File("Screenshots" + fileSeperator + "Results");
+            File file = new File("screenshots" + fileSeperator + "results");
             if (!file.exists()) {
                 System.out.println("File created " + file);
                 file.mkdir();
             }
 
             File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            File targetFile = new File("Screenshots" + fileSeperator + "Results" + fileSeperator + testName, screenShotName);
+            File targetFile = new File("screenshots" + fileSeperator + "results" + fileSeperator + testName, screenShotName);
             FileUtils.copyFile(screenshotFile, targetFile);
 
             return screenShotName;

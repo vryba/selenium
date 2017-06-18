@@ -42,6 +42,6 @@ public class Search_TC {
         String searchText="WebDriver";
         HomePO homePO = new HomePO();
         boolean searchResult = homePO.insertStringInSearchField(searchText).areListItemsHaveText(searchText);
-        assertTrue(searchResult);
+        assertTrue(!searchResult);
     }
 }
