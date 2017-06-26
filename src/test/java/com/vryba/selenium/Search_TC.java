@@ -3,6 +3,9 @@ package com.vryba.selenium;
 import com.vryba.selenium.pageObjects.HomePO;
 import com.vryba.selenium.utilities.BrowserFactory;
 import com.vryba.selenium.utilities.BrowserUtilities;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -15,12 +18,12 @@ public class Search_TC {
     private String baseUrl = "https://stackoverflow.com/";
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
-    //DOMConfigurator.configure("log4j2.xml");
-    //Log.startTestCase("Selenium_Test_001");
+    private Logger LOG = LogManager.getLogger(Search_TC.class);
 
     @BeforeMethod
     public void methodSetup() {
         BrowserFactory.startBrowser(BrowserFactory.BrowserType.FirefoxDriver, baseUrl);
+        LOG.info("Start browser");
     }
 
     @AfterMethod
@@ -35,13 +38,15 @@ public class Search_TC {
         if (!"".equals(verificationErrorString)) {
             fail(verificationErrorString);
         }
+        LOG.info("Closed browser");
     }
 
     @Test
-    public void checkSearchFunctioanality() {
+    public void checkSearchFunctionality() {
+        LOG.info("Start Test: checkSearchFunctionality");
         String searchText="WebDriver";
         HomePO homePO = new HomePO();
         boolean searchResult = homePO.insertStringInSearchField(searchText).areListItemsHaveText(searchText);
-        assertTrue(!searchResult);
+        Assert.assertTrue(!searchResult);
     }
 }

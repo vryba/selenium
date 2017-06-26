@@ -1,8 +1,10 @@
 package com.vryba.selenium.utilities;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,6 +19,7 @@ public class Element {
     private final String ERROR_WEB_ELEMENT_NOT_FOUND = "! ERROR\tWeb element is missing. Location: %s";
     private final By locator;
     private WebElement webElement;
+    private Logger LOG = LogManager.getLogger(Element.class);
 
     /**
      * Returns an instance of Element by given locator
@@ -58,6 +61,7 @@ public class Element {
      * @return
      */
     public Element click() {
+        LOG.info("Clicked on element found by ("+locator.toString()+")");
         getVisibleWebElement().click();
         return this;
     }
@@ -70,6 +74,7 @@ public class Element {
      * @return
      */
     public Element click(int xOffset, int yOffset) {
+        LOG.info("Move mouse cursor to an element located at x,y coordinate and click");
         Actions actions = new Actions(BrowserFactory.getWebDriver());
         actions.moveToElement(getVisibleWebElement(), xOffset, yOffset).build().perform();
         return this;
@@ -81,6 +86,7 @@ public class Element {
      * @param text
      */
     public Element sendKeys(String text) {
+        LOG.info("Clear than Enter text into the element found by ("+locator.toString()+")");
         WebElement inputField = getVisibleWebElement();
         inputField.clear();
         inputField.sendKeys(text);
@@ -93,6 +99,7 @@ public class Element {
      * @param text
      */
     public Element addKeys(String text) {
+        LOG.info("Add text to element found by ("+locator.toString()+")");
         getVisibleWebElement().sendKeys(text);
         return this;
     }
@@ -103,6 +110,7 @@ public class Element {
      * @return text
      */
     public String getText() {
+        LOG.info("Getting displayed text of element found by ("+locator.toString()+")");
         return getVisibleWebElement().getText();
     }
 
@@ -112,6 +120,7 @@ public class Element {
      * @return
      */
     public String getContainingText() {
+        LOG.info("Getting text of invisible element found by ("+locator.toString()+")");
         return getPresentWebElement().getAttribute(TEXT_CONTENT_ATTRIBUTE);
     }
 
@@ -122,6 +131,7 @@ public class Element {
      * @return string
      */
     public String getAttribute(String attribute) {
+        LOG.info("Getting attribute value of element found by ("+locator.toString()+")");
         return getPresentWebElement().getAttribute(attribute);
     }
 
@@ -132,6 +142,7 @@ public class Element {
      * @return
      */
     public Boolean isVisibility(Boolean isVisible) {
+        LOG.info("Checking if element visibility matches the given value");
         Boolean visibilityResult;
         if (isVisible) {
             visibilityResult = waitForVisibility() != null;
@@ -148,6 +159,7 @@ public class Element {
      * @return
      */
     public Boolean isPresence(Boolean isVisible) {
+        LOG.info("Checking if element presence matches the given value");
         Boolean presenceResult;
         if (isVisible) {
             presenceResult = waitForPresence() != null;
@@ -158,12 +170,13 @@ public class Element {
     }
 
     /**
-     * Expectation for checking that an element is present on the DOM of a page
+     * Expectation for checking that an element is present in the DOM of a page
      * and visible.
      *
      * @return
      */
     private WebElement getVisibleWebElement() {
+        LOG.info("Checking if Expected element present in DOM and visible");
         WebElement webelement = waitForVisibility();
         if (webelement == null) {
             throw new RuntimeException(String.format(ERROR_WEB_ELEMENT_NOT_VISIBLE, locator));
@@ -172,12 +185,13 @@ public class Element {
     }
 
     /**
-     * Expectation for checking that an element is present on the DOM of a page
+     * Expectation for checking that an element is present in the DOM of a page
      * and visibility isn't require.
      *
      * @return
      */
     private WebElement getPresentWebElement() {
+        LOG.info("Checking if Expected element present in DOM, not necessarily visible");
         WebElement webelement = waitForPresence();
         if (webelement == null) {
             throw new RuntimeException(String.format(ERROR_WEB_ELEMENT_NOT_FOUND, locator));
@@ -191,6 +205,7 @@ public class Element {
      * @return
      */
     private WebElement waitForVisibility() {
+        LOG.info("Wait until element becomes visible");
         WebDriverWait wait = new WebDriverWait(BrowserFactory.getWebDriver(), IMPLICITLY_WAIT_TIMEOUT);
         waitForPresence();
         if (locator != null) {
@@ -206,6 +221,7 @@ public class Element {
      * @return
      */
     private Boolean waitForInvisibility() {
+        LOG.info("Wait until element becomes visible");
         WebDriverWait wait = new WebDriverWait(BrowserFactory.getWebDriver(), IMPLICITLY_WAIT_TIMEOUT);
         waitForPresence();
         if (locator != null) {
@@ -221,6 +237,7 @@ public class Element {
      * @return
      */
     private WebElement waitForPresence() {
+        LOG.info("Wait until element becomes visible");
         if (locator != null) {
             return new WebDriverWait(BrowserFactory.getWebDriver(), IMPLICITLY_WAIT_TIMEOUT)
                     .until(ExpectedConditions.presenceOfElementLocated(locator));
@@ -235,6 +252,7 @@ public class Element {
      * @return
      */
     private Boolean waitForStaleness() {
+        LOG.info("Wait for element staleness");
         if (webElement != null) {
             return new WebDriverWait(BrowserFactory.getWebDriver(), IMPLICITLY_WAIT_TIMEOUT)
                     .until(ExpectedConditions.stalenessOf(webElement));

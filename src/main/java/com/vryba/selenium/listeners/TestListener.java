@@ -19,7 +19,7 @@ public class TestListener extends TestListenerAdapter {
 
         driver = BrowserFactory.getWebDriver();
 
-        String testClassName = getTestClassName(result.getInstanceName()).trim();
+        String testClassName = getTestClassName(result.getTestClass().toString()).trim();
         String testMethodName = result.getName().toString().trim() + "_%d.png";
         String screenShotName = String.format(testMethodName, System.currentTimeMillis());
 
