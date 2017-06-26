@@ -15,7 +15,7 @@ public class ExcelDataReader {
     private XSSFCell cell;
     private XSSFRow row;
 
-    //method to set filePath, open excelFile, pass path and sheetname as args to this method
+    //method to set filePath, open excelFile, passing path and sheetname as args to this method
     public ExcelDataReader(String path, String sheetName) throws Exception{
 
         try {
@@ -33,7 +33,7 @@ public class ExcelDataReader {
 
         return excelWSheet.getLastRowNum();
     }
-    //method to read test dataProvider from file cell, in we're passing parameters as Rox num nad Col num
+    //method to read test dataProvider from file cell, in we're passing parameters as RowNum and ColNum
     public String getCellData(int RowNum, int ColNum){
         try {
             cell = excelWSheet.getRow(RowNum).getCell(ColNum);
@@ -43,7 +43,7 @@ public class ExcelDataReader {
             return "";
         }
     }
-    //method to write in the Excel cell, row num and Col num are the parameters
+    //method to write into the Excel cell, Row num and Col num are the parameters
     public void setCellData(String Result, int RowNum, int ColNum)throws Exception {
         try {
             row = excelWSheet.getRow(RowNum);
