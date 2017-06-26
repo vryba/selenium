@@ -4,7 +4,7 @@ import com.vryba.selenium.dataProvider.UsersData;
 import com.vryba.selenium.utilities.Element;
 import org.openqa.selenium.By;
 
-public class LoginPO {
+public class LoginPage {
 
     private Element activeTab;
     private Element emailField;
@@ -16,7 +16,7 @@ public class LoginPO {
     public static final String INVALID_EMAIL = "The email is not a valid email address.";
     public static final String INVALID_PASSWORD = "The email or password is incorrect.";
 
-    public LoginPO() {
+    public LoginPage() {
         this.activeTab = Element.find(By.xpath(".//*[@id='tabs']/a[@class='youarehere']"));
         this.emailField = Element.find(By.id("email"));
         this.passwordField = Element.find(By.id("password"));
@@ -28,19 +28,19 @@ public class LoginPO {
         return activeTab.getText();
     }
 
-    public LoginPO enterCredentials(String email, String password) {
+    public LoginPage enterCredentials(String email, String password) {
         emailField.sendKeys(email);
         passwordField.sendKeys(password);
         return this;
     }
 
-    public LoginPO enterCredentials(UsersData usersData) {
+    public LoginPage enterCredentials(UsersData usersData) {
         emailField.sendKeys(usersData.getEmail());
         passwordField.sendKeys(usersData.getPassword());
         return this;
     }
 
-    public LoginPO submitButtonClick() {
+    public LoginPage submitButtonClick() {
         loginSubmitButton.click();
         return this;
     }

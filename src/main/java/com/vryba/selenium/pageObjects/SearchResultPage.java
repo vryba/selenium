@@ -3,10 +3,10 @@ package com.vryba.selenium.pageObjects;
 import com.vryba.selenium.utilities.Elements;
 import org.openqa.selenium.By;
 
-public class SearchResultPO {
+public class SearchResultPage {
     private Elements searchResults;
 
-    public SearchResultPO(){
+    public SearchResultPage(){
 
         this.searchResults = Elements.find(By.xpath("//div[@class='result-link']//a"));
     }
