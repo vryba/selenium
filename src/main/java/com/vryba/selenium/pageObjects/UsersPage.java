@@ -1,4 +1,4 @@
 package com.vryba.selenium.pageObjects;
 
-public class UsersPO {
+public class UsersPage {
 }
