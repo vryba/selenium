@@ -18,6 +18,6 @@ public class Search_TC extends TestBase{
         String searchText="WebDriver";
         HomePage homePage = new HomePage();
         boolean searchResult = homePage.insertStringInSearchField(searchText).areListItemsHaveText(searchText);
-        Assert.assertTrue(searchResult);
+        Assert.assertTrue(!searchResult);
     }
 }

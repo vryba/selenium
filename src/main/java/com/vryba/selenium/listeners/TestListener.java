@@ -48,14 +48,14 @@ public class TestListener extends TestListenerAdapter {
 
             return screenShotName;
         } catch (Exception e) {
-            System.out.println("An exception occured while taking screenshot " + e.getCause());
+            System.out.println("An exception occurred while taking screenshot " + e.getCause());
             return null;
         }
     }
 
     public String getTestClassName(String testName) {
         String[] reqTestClassname = testName.split("\\.");
-        int i = reqTestClassname.length - 1;
+        int i = reqTestClassname.length-1;
         System.out.println("Required Test Name: " + reqTestClassname[i]);
         return reqTestClassname[i];
     }
