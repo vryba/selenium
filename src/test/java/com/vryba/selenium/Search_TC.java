@@ -15,9 +15,11 @@ public class Search_TC extends TestBase{
     @Test
     public void checkSearchFunctionality() {
         LOG.info("Start Test: checkSearchFunctionality");
-        String searchText="WebDriver";
+        String searchKeyword ="WebDriver";
         HomePage homePage = new HomePage();
-        boolean searchResult = homePage.insertStringInSearchField(searchText).areListItemsHaveText(searchText);
+        boolean searchResult = homePage
+                .insertStringInSearchField(searchKeyword)
+                .areReturnResultsKeywordRelevant(searchKeyword);
         Assert.assertTrue(!searchResult);
     }
 }

@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
- * Class for WebElement manipulating
+ * Class for WebElement manipulation
  */
 public class Element {
     public static final long IMPLICITLY_WAIT_TIMEOUT = 3;

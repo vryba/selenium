@@ -10,11 +10,13 @@ public class QuestionsPage {
     private Element questionsSummaryNum;
 
     public QuestionsPage(){
-
         this.activeNavBarListItem = Element.find(By.xpath(""));
         this.activeTab = Element.find(By.xpath(""));
         this.subHeader = Element.find(By.xpath(""));
         this.questionsSummaryNum = Element.find(By.xpath(""));
-
     }
+    public String getActiveTabCaptionValue() {
+        return activeTab.getText();
+    }
+
 }

@@ -11,7 +11,7 @@ public class SearchResultPage {
         this.searchResults = Elements.find(By.xpath("//div[@class='result-link']//a"));
     }
 
-    public boolean areListItemsHaveText(String text){
+    public boolean areReturnResultsKeywordRelevant(String text){
         return this.searchResults.isStringHasText(text);
     }
 }
