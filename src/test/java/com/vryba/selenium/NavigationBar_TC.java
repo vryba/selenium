@@ -16,7 +16,6 @@ public class NavigationBar_TC extends TestBase{
         HomePage homePage = new HomePage();
         Assert.assertEquals(homePage.questionsNavBarListItem.getAttribute("class"), "-item");
         homePage.questionsNavBarListItem.click();
-        Assert.assertEquals(homePage.);
         Assert.assertEquals(homePage.questionsNavBarListItem.getAttribute("class"), "-item _current");
         LOG.info("Questions tab is active");
     }
