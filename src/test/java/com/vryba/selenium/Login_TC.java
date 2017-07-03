@@ -14,6 +14,16 @@ public class Login_TC extends TestBase {
     private Logger LOG = LogManager.getLogger(Login_TC.class);
 
     @Test
+    public void activeTabsCheck(){
+        LOG.info("Start Test: activeTabsCheck");
+        HomePage homePage = new HomePage();
+        String activeTabCaptionValue = homePage
+                .loginButtonClick()
+                .getActiveTabCaptionValue();
+        Assert.assertEquals(activeTabCaptionValue, "Log in");
+    }
+
+    @Test
     public void emptyEmail() {
         LOG.info("Start Test: emptyEmail");
         HomePage homePage = new HomePage();
