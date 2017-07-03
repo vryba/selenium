@@ -15,7 +15,9 @@ public class Home_Page_TC extends TestBase{
         @Test
         public void checkDismissButton() {
             LOG.info("Start Test: checkDismissButton");
+            //An object is created for the home page using the HomePage class
             HomePage homePage = new HomePage();
+            //The homePage object uses the dismissButtonClick() method to open the site
             homePage.dismissButtonClick();
             Assert.assertTrue(isStackBoxDisplayed);
         }

@@ -14,7 +14,7 @@ public class Search_TC extends TestBase{
     @Test
     public void checkSearchFunctionality() {
         LOG.info("Start Test: checkSearchFunctionality");
-        String searchKeyword = "WebDriver";
+        String searchKeyword = "Firefox WebDriver";
         HomePage homePage = new HomePage();
         boolean searchResult = homePage
                 .insertStringInSearchField(searchKeyword)
@@ -36,7 +36,7 @@ public class Search_TC extends TestBase{
     @Test
     public void checkResultCountPositiveNumber() {
         LOG.info("Start Test: checkResultCountPositiveNumber");
-        String searchKeyword = "HEAD repository";
+        String searchKeyword = "GitHub repository";
         HomePage homePage = new HomePage();
         boolean isTotalResultsCountPositive = homePage
                 .insertStringInSearchField(searchKeyword)

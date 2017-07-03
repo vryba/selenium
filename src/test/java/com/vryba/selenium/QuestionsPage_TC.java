@@ -9,14 +9,4 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class QuestionsPage_TC extends TestBase {
-    private Logger LOG = LogManager.getLogger(QuestionsPage.class);
-    @Test
-    public void checkActiveNavBarListItem() {
-        LOG.info("Start Test: checkActiveNavBarListItem");
-        HomePage homePage = new HomePage();
-        Assert.assertEquals(homePage.questionsNavBarListItem.getAttribute("class"), "-item");
-        homePage.questionsNavBarListItem.click();
-        Assert.assertEquals(homePage.questionsNavBarListItem.getAttribute("class"), "-item _current");
-        LOG.info("Questions tab is active");
-    }
 }
