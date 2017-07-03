@@ -19,7 +19,7 @@ public class Search_TC extends TestBase{
         boolean searchResult = homePage
                 .insertStringInSearchField(searchKeyword)
                 .areReturnResultsKeywordRelevant(searchKeyword);
-        Assert.assertTrue(!searchResult);
+        Assert.assertTrue(searchResult);
     }
 
     @Test
