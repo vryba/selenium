@@ -14,18 +14,18 @@ public class TestBase {
     private String baseUrl = Constant.URL;
     private StringBuffer verificationErrors = new StringBuffer();
     private Logger LOG = LogManager.getFormatterLogger();
-
+    // annotated method will be run before the first test method in the current class is invoked
     @BeforeClass
     public void methodSetup() {
         BrowserFactory.startBrowser(BrowserFactory.BrowserType.FirefoxDriver, baseUrl);
         LOG.info("Starting Browser");
     }
-
+    // annotated method will be run after each test method
     @AfterMethod
     public void testCleanUp() {
         new BrowserUtilities().executeJSCode(BrowserUtilities.CLEAR_LOCAL_STORAGE);
     }
-
+    // annotated method will be run after all the test methods in the current class have been run
     @AfterClass(alwaysRun = true)
     public void tearDown() {
         BrowserFactory.closeSession();
