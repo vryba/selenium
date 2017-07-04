@@ -33,6 +33,7 @@ public class SearchResultPage {
         String countText = resCountDisplayBox.getContainingText();
         return extractNumberFromResultCountText(countText);
     }
+    //method parse the substring of numerical characters into Double
     private double extractNumberFromResultCountText(String countText) {
         countText = countText.replaceAll(",",".");
         return Double.parseDouble(countText.substring(0, countText.indexOf(" results")));
