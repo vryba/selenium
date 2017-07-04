@@ -5,27 +5,28 @@ import org.openqa.selenium.By;
 
 public class HomePage {
     private Element loginButton;
+    private Element signUpButton;
     private Element avatarLogo;
     private Element searchField;
     private Element searchButton;
-    private Element joinStackBox;
     private Element dismissButton;
     private Element askQButton;
     public Element loginWarning;
 
     public HomePage() {
         this.loginButton = Element.find(By.xpath("//a[@class='login-link btn-clear']"));
+        this.signUpButton = Element.find(By.xpath("//a[@id='tell-me-more']"));
         this.avatarLogo = Element.find(By.xpath("//div[contains(@class, 'gravatar-wrapper')]"));
         this.searchField = Element.find(By.xpath("//input[contains(@class, 'js-search-field')]"));
         this.searchButton = Element.find(By.xpath("//button[@class='btn js-search-submit']"));
-        this.joinStackBox = Element.find(By.xpath(".//*[@id='herobox']"));
         this.dismissButton = Element.find(By.xpath(".//*[@id='close']/a"));
-        this.askQButton = Element.find(By.xpath(".//*[@id='sidebar']/div[1]/a"));
+        this.askQButton = Element.find(By.xpath("//div[@id='sidebar']/div[1]/a"));
+        this.loginWarning = Element.find(By.xpath("//*[@id='login-page']/div[1]/p[1]"));
     }
 
-    public HomePage loginWarning(String text){
-        this.askQButton.click();
-        return new HomePage();
+    public SignUpPage signUpButtonClick() {
+        signUpButton.click();
+        return new SignUpPage();
     }
 
     public String getLoginWarningText(){
