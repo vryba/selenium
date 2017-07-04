@@ -14,7 +14,7 @@ public class Login_TC extends TestBase {
     private Logger LOG = LogManager.getLogger(Login_TC.class);
 
     @Test
-    public void activeTabsCheck(){
+    public void activeTabsCheck() {
         LOG.info("Start Test: activeTabsCheck");
         HomePage homePage = new HomePage();
         String activeTabCaptionValue = homePage

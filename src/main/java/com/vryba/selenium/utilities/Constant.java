@@ -5,7 +5,7 @@ public class Constant {
 
     public static final String HomePage_Title = "Stack Overflow - Where Developers Learn, Share &amp; Build Their Careers - Stack Overflow";
 
-    public static final String Username = "testuser_1";
+    public static final String Username = "vryba";
 
     public static final String Password = "Test@123";
 
