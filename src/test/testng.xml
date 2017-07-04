@@ -9,6 +9,7 @@
        <classes>
             <class name="com.vryba.selenium.Home_Page_TC" />
             <class name="com.vryba.selenium.Login_TC" />
+           <class name="com.vryba.selenium.SignUp_TC" />
             <class name="com.vryba.selenium.Search_TC" />
             <class name="com.vryba.selenium.NavigationBar_TC"/>
         </classes>
