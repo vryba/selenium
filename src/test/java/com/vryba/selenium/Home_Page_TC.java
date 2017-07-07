@@ -13,19 +13,11 @@ public class Home_Page_TC extends TestBase {
     private Logger LOG = LogManager.getLogger(Home_Page_TC.class);
 
     @Test
-    public void checkDismissButton() {
-        LOG.info("Start Test: checkDismissButton");
-        //An object is created for the home page using the HomePage class
-        HomePage homePage = new HomePage();
-        //The homePage object uses the dismissButtonClick() method to open the site
-        homePage.dismissButtonClick();
-        Assert.assertTrue(isStackBoxDisplayed);
-    }
-
-    @Test
     public void loginWarningMessage() {
         LOG.info("Start Test: loginWarningMessage");
+        //An object is created for the home page using the HomePage class
         HomePage homePage = new HomePage();
+        //The homePage object uses the askButtonClick() method to open the spage
         String warningText = homePage
                 .askQButtonClick()
                 .getLoginWarningText();

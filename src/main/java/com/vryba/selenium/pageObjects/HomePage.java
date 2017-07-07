@@ -9,9 +9,8 @@ public class HomePage {
     private Element avatarLogo;
     private Element searchField;
     private Element searchButton;
-    private Element dismissButton;
     private Element askQButton;
-    public Element loginWarning;
+    private Element loginWarning;
 
     public HomePage() {
         this.loginButton = Element.find(By.xpath("//a[@class='login-link btn-clear']"));
@@ -19,7 +18,6 @@ public class HomePage {
         this.avatarLogo = Element.find(By.xpath("//div[contains(@class, 'gravatar-wrapper')]"));
         this.searchField = Element.find(By.xpath("//input[contains(@class, 'js-search-field')]"));
         this.searchButton = Element.find(By.xpath("//button[@class='btn js-search-submit']"));
-        this.dismissButton = Element.find(By.xpath(".//*[@id='close']/a"));
         this.askQButton = Element.find(By.xpath("//div[@id='sidebar']/div[1]/a"));
         this.loginWarning = Element.find(By.xpath("//*[@id='login-page']/div[1]/p[1]"));
     }
@@ -36,11 +34,6 @@ public class HomePage {
     public LoginPage loginButtonClick() {
         loginButton.click();
         return new LoginPage();
-    }
-
-    public HomePage dismissButtonClick(){
-        this.dismissButton.click();
-        return new HomePage();
     }
 
     public HomePage askQButtonClick(){
