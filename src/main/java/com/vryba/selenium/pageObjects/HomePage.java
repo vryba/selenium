@@ -1,5 +1,5 @@
 package com.vryba.selenium.pageObjects;
-import com.gargoylesoftware.htmlunit.Page;
+
 import com.vryba.selenium.utilities.Element;
 import org.openqa.selenium.By;
 
