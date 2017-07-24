@@ -2,7 +2,9 @@ package com.vryba.selenium.pageObjects;
 
 import com.vryba.selenium.utilities.Element;
 import org.openqa.selenium.By;
-
+/**
+ * HomePage object is an object-oriented class that serves as an interface to a Home page of AUT
+ */
 public class HomePage {
     private Element loginButton;
     private Element signUpButton;
@@ -13,6 +15,8 @@ public class HomePage {
     private Element loginWarning;
 
     public HomePage() {
+        // Below is a so called 'User Interface Map', a mechanism that stores all the locators for a page test
+        // in one place for easy modification when identifiers or paths to UI elements change in the AUT
         this.loginButton = Element.find(By.xpath("//a[@class='login-link btn-clear']"));
         this.signUpButton = Element.find(By.xpath("//a[@id='tell-me-more']"));
         this.avatarLogo = Element.find(By.xpath("//div[contains(@class, 'gravatar-wrapper')]"));
