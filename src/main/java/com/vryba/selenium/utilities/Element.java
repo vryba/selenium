@@ -56,7 +56,7 @@ public class Element {
     }
 
     /**
-     * Click on this element
+     * Clicks on an element only if it is available on a page
      *
      * @return
      */
@@ -259,6 +259,40 @@ public class Element {
         } else {
             return true;
         }
+    }
+
+    /**
+     *  Move mouse to WebElement
+     *
+     * @return
+     */
+    public void mouseOver(){
+
+        Actions act = new Actions(BrowserFactory.getWebDriver());
+        act.moveToElement(waitForVisibility()).build().perform();
+    }
+
+    /**
+     * Mouse drag and drop
+     *
+     * @return
+     */
+    public void mouseDragAndDrop(Element destination){
+
+        new Actions(BrowserFactory.getWebDriver())
+                .moveToElement(waitForVisibility())
+                .clickAndHold()
+                .moveToElement(destination.getWebElement())
+                .release().build().perform();
+    }
+
+    /**
+     * Return instance of an WebElement
+     *
+     * @return
+     */
+    protected WebElement getWebElement() {
+        return waitForPresence();
     }
 }
 
