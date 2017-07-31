@@ -6,25 +6,37 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
+/**
+ * Tests Home page static and dynamic content use the methods of the HomePage object class,
+ * when they interact with the UI of the Home page
+ */
 public class Home_Page_TC extends TestBase {
 
     private boolean isStackBoxDisplayed = true;
     private Logger LOG = LogManager.getLogger(Home_Page_TC.class);
 
+@Test
+    public void tagTextValidation(){
+        LOG.info("Start Test: tagTextValidation");
+        //An object is created for the home page using the HomePage class
+        HomePage homePage = new HomePage();
+        Assert.assertTrue(homePage.mouseOverTag()
+                .isTagDescriptionContainsText(homePage.getTagContent()));
+    }
+
     @Test
     public void loginWarningMessage() {
         LOG.info("Start Test: loginWarningMessage");
-        //An object is created for the home page using the HomePage class
         HomePage homePage = new HomePage();
-        //The homePage object uses the askButtonClick() method to open the spage
         String warningText = homePage
                 .askQButtonClick()
                 .getLoginWarningText();
         Assert.assertEquals(warningText, "You must be logged in to ask a question on Stack Overflow");
     }
 
+    @Test
     public void capsMessage() {
+        LOG.info("Start Test: capsMessage");
         HomePage homePage = new HomePage();
         String capsNoteText = homePage
                 .loginButtonClick()
