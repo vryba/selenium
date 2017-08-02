@@ -14,4 +14,10 @@ public class BrowserUtilities {
 
         ((JavascriptExecutor) BrowserFactory.getWebDriver()).executeScript(jsCode);
     }
+    public void scrollToElement(Element element){
+
+        int yLocation = element.getWebElement().getLocation().getY();
+        executeJSCode(String.format("window.scrollTo(%d, 0)", yLocation));
+    }
+
 }
